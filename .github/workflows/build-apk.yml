@@ -23,7 +23,7 @@ jobs:
           set -euo pipefail
           mkdir -p ci-diagnostics
           {
-            echo "GalleryManager CI diagnostics"
+            echo "Starless Gallery CI diagnostics"
             echo "Run: ${GITHUB_RUN_ID}"
             echo "Commit: ${GITHUB_SHA}"
             echo "Workflow: ${GITHUB_WORKFLOW}"
@@ -97,7 +97,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p ci-artifacts
-          cp app/build/outputs/apk/debug/app-debug.apk ci-artifacts/gallerymanager.apk
+          cp app/build/outputs/apk/debug/app-debug.apk ci-artifacts/starless-gallery.apk
 
       - name: Collect generated Gradle reports
         if: always()
@@ -125,8 +125,8 @@ jobs:
         if: steps.apk.outcome == 'success'
         uses: actions/upload-artifact@v7
         with:
-          name: GalleryManager-debug-apk
-          path: ci-artifacts/gallerymanager.apk
+          name: StarlessGallery-debug-apk
+          path: ci-artifacts/starless-gallery.apk
           if-no-files-found: error
           retention-days: 14
 
@@ -134,7 +134,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: GalleryManager-ci-diagnostics
+          name: StarlessGallery-ci-diagnostics
           path: ci-diagnostics/
           if-no-files-found: error
           retention-days: 14
